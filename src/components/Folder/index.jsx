@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import clsx from 'clsx';
 
 import { Show } from 'hoc';
-import { Child, ToggleFolderButton } from 'components';
+import { Child, FolderName } from 'components';
+
+import { getFolderMeta } from 'utils';
 
 import { data } from 'assets';
 
@@ -11,32 +12,26 @@ import classes from './Folder.module.scss';
 const _memoizeExpand = {};
 
 const Folder = ({ name }) => {
-  const [expand, setExpand] = useState(_memoizeExpand[name] ?? true);
+  const [isExpanded, setIsExpanded] = useState(_memoizeExpand[name] ?? true);
 
-  const { type, child } = data[name] ?? {};
-
-  const isFolder = type === 'folder';
-  const isExpandable = isFolder && !!child?.length;
+  const { isExpandable, child } = getFolderMeta(data[name]);
 
   useEffect(() => {
-    if (_memoizeExpand[name] !== expand) {
-      _memoizeExpand[name] = expand;
+    if (_memoizeExpand[name] !== isExpanded) {
+      _memoizeExpand[name] = isExpanded;
     }
-  }, [expand]);
+  }, [isExpanded]);
 
   return (
-    <div className={clsx({ [classes.folder]: isFolder })}>
-      <div
-        className={clsx({ [classes.name]: isExpandable })}
-        onClick={() => isExpandable && setExpand(d => !d)}
-      >
-        <Show when={isExpandable}>
-          <ToggleFolderButton expand={expand} />
-        </Show>
-        <div>{name}</div>
-      </div>
+    <div className={classes.container}>
+      <FolderName
+        isExpandable={isExpandable}
+        isExpanded={isExpanded}
+        name={name}
+        onClick={() => setIsExpanded(d => !d)}
+      />
 
-      <Show when={expand && isExpandable}>
+      <Show when={isExpanded && isExpandable}>
         <Child child={child} />
       </Show>
     </div>

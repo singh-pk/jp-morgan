@@ -1,0 +1,23 @@
+.grid {
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  height: 35px;
+  flex: 1;
+  border: 1px solid black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: rgb(168, 168, 168);
+  font-weight: 600;
+  text-transform: uppercase;
+}

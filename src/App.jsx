@@ -1,4 +1,4 @@
-import { Folder } from 'components';
+import { Folder, Grid } from 'components';
 
 import './App.scss';
 
@@ -8,6 +8,8 @@ const App = () => {
   return (
     <div className='App'>
       <Folder name={ROOT} />
+
+      <Grid name={ROOT} />
     </div>
   );
 };
