@@ -1,0 +1,15 @@
+@import 'styles/main';
+
+.header {
+  @include flexBetween;
+  margin-bottom: 40px;
+}
+
+.activeLink {
+  display: none;
+}
+
+.link {
+  font-size: 1.2rem;
+  text-decoration: none;
+}

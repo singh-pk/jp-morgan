@@ -1,3 +1,4 @@
+export { default as Header } from './Header';
 export { default as Folder } from './Folder';
 export { default as FolderName } from './FolderName';
 export { default as Child } from './Child';

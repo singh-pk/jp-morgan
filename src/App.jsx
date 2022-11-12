@@ -1,15 +1,32 @@
-import { Folder, Grid } from 'components';
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
+import { ROUTES } from 'utils';
+
+import { Header } from 'components';
 
 import './App.scss';
 
-const ROOT = 'root';
-
 const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.location.pathname === '/') {
+      navigate('/list');
+    }
+  }, []);
+
   return (
     <div className='App'>
-      <Folder name={ROOT} />
+      <Header />
 
-      <Grid name={ROOT} />
+      <Routes>
+        {ROUTES.map(({ path, element: Element, props }) => (
+          <Route path={path} element={<Element {...props} />} key={path} />
+        ))}
+
+        <Route path='*' element={<div>404! Page Not Found</div>} />
+      </Routes>
     </div>
   );
 };

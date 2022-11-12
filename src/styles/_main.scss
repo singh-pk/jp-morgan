@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+@mixin flexBetween {
+  @include flexAlignCenter;
+  justify-content: space-between;
+}
+
 @mixin border {
   border: 1px solid black;
 }
