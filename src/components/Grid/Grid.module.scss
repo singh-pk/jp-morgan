@@ -2,6 +2,7 @@
 
 .grid {
   @include border;
+  min-width: 600px;
 }
 
 .row {
