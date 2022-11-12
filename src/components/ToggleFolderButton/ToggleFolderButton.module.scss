@@ -1,13 +1,14 @@
+@import 'styles/main';
+@import 'styles/const';
+
 .toggleFolderButton {
-  margin: 0 5px;
+  margin: 0 $sp-sm;
   background-color: rgb(220, 219, 219);
   height: 10px;
   width: 10px;
   border-radius: 2.5px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
 
   font-size: 6px;
 }

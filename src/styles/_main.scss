@@ -1,0 +1,17 @@
+@mixin flex {
+  display: flex;
+}
+
+@mixin flexAlignCenter {
+  @include flex;
+  align-items: center;
+}
+
+@mixin flexCenter {
+  @include flexAlignCenter;
+  justify-content: center;
+}
+
+@mixin border {
+  border: 1px solid black;
+}

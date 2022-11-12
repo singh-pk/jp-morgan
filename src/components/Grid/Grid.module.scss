@@ -1,19 +1,18 @@
+@import 'styles/main';
+
 .grid {
-  border: 1px solid black;
+  @include border;
 }
 
 .row {
-  display: flex;
+  @include flex;
 }
 
 .cell {
   height: 35px;
   flex: 1;
-  border: 1px solid black;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include border;
+  @include flexCenter;
 }
 
 .header {
