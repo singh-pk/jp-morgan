@@ -25,7 +25,7 @@ const Grid = () => {
 
     newMatrix[0][0].styles = classes.header;
 
-    (function value(name = 'root', col = 0) {
+    (function setGridValue(name = 'root', col = 0) {
       const { isExpandable, child } = getFolderMeta(data[name]);
 
       const isExpanded = _memoizeExpand[name] ?? true;
@@ -51,7 +51,7 @@ const Grid = () => {
       );
 
       if (isExpandable && (_memoizeExpand[name] ?? true)) {
-        child.forEach(d => value(d, col + 1));
+        child.forEach(d => setGridValue(d, col + 1));
       } else {
         row += 1;
       }
